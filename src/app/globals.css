@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFF8F0;
+  --foreground: #2D1B4E;
+  --primary: #8B5CF6;
+  --primary-dark: #7C3AED;
+  --secondary: #F59E0B;
+  --accent: #EC4899;
+  --card-bg: #FFFBF5;
+  --card-border: #E9D5FF;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --font-sans: var(--font-quicksand);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
+/* 2000s sitcom-style card */
+.quest-card {
+  background: linear-gradient(135deg, #FFFBF5 0%, #FEF3E2 100%);
+  border: 3px solid #E9D5FF;
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 6px -1px rgba(139, 92, 246, 0.1),
+    0 2px 4px -2px rgba(139, 92, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.quest-card:hover {
+  box-shadow: 
+    0 10px 15px -3px rgba(139, 92, 246, 0.2),
+    0 4px 6px -4px rgba(139, 92, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
+
+/* Episode title styling */
+.episode-title {
+  font-style: italic;
+  color: #7C3AED;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Retro button style */
+.btn-retro {
+  background: linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%);
+  border: 2px solid #6D28D9;
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 0 #5B21B6,
+    0 6px 10px rgba(91, 33, 182, 0.3);
+  color: white;
+  font-weight: 700;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.1s ease;
+}
+
+.btn-retro:hover {
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #5B21B6,
+    0 4px 6px rgba(91, 33, 182, 0.3);
+}
+
+.btn-retro:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #5B21B6,
+    0 2px 4px rgba(91, 33, 182, 0.3);
+}
+
+.btn-secondary {
+  background: linear-gradient(180deg, #F59E0B 0%, #D97706 100%);
+  border: 2px solid #B45309;
+  box-shadow: 
+    0 4px 0 #92400E,
+    0 6px 10px rgba(146, 64, 14, 0.3);
+}
+
+.btn-secondary:hover {
+  box-shadow: 
+    0 2px 0 #92400E,
+    0 4px 6px rgba(146, 64, 14, 0.3);
+}
+
+/* Tab navigation */
+.tab-active {
+  background: linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%);
+  color: white;
+  border-bottom: 3px solid #F59E0B;
+}
+
+.tab-inactive {
+  background: #F3E8FF;
+  color: #6D28D9;
+}
+
+.tab-inactive:hover {
+  background: #EDE9FE;
+}
+
+/* Leaderboard styling */
+.leaderboard-row {
+  background: linear-gradient(90deg, #FFFBF5 0%, #FEF3E2 100%);
+  border-left: 4px solid #8B5CF6;
+}
+
+.leaderboard-row:nth-child(1) {
+  border-left-color: #F59E0B;
+  background: linear-gradient(90deg, #FEF3C7 0%, #FDE68A 100%);
+}
+
+.leaderboard-row:nth-child(2) {
+  border-left-color: #9CA3AF;
+  background: linear-gradient(90deg, #F3F4F6 0%, #E5E7EB 100%);
+}
+
+.leaderboard-row:nth-child(3) {
+  border-left-color: #CD7F32;
+  background: linear-gradient(90deg, #FED7AA 0%, #FDBA74 100%);
+}
+
+/* Points badge */
+.points-badge {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  border: 2px solid #B45309;
+  border-radius: 20px;
+  color: white;
+  font-weight: 700;
+  padding: 4px 12px;
+  font-size: 14px;
+}
+
+/* Difficulty badges */
+.difficulty-easy {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  border: 2px solid #047857;
+}
+
+.difficulty-medium {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  border: 2px solid #B45309;
+}
+
+.difficulty-hard {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  border: 2px solid #B91C1C;
+}
