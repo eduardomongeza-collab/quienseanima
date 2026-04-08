@@ -45,8 +45,8 @@ export default function DashboardPage() {
 
   if (!player) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-purple-50">
-        <div className="text-purple-600">Loading...</div>
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-primary">Loading...</div>
       </div>
     );
   }
@@ -57,26 +57,26 @@ export default function DashboardPage() {
   const isOptInPhase = now < optInDeadline;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-50 to-amber-50">
-      <Header 
-        playerName={player.nickname} 
-        isAdmin={player.isAdmin} 
-        isLoggedIn={true} 
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header
+        playerName={player.nickname}
+        isAdmin={player.isAdmin}
+        isLoggedIn={true}
       />
 
       <main className="flex-1 px-4 py-6 pb-24 md:pb-6">
         <div className="max-w-2xl mx-auto">
           {/* Status Banner */}
-          <div className="bg-gradient-to-r from-purple-600 to-amber-500 text-white rounded-xl p-4 mb-6 shadow-lg">
+          <div className="bg-primary text-white rounded-xl p-4 mb-6 shadow-md">
             <div className="flex items-center gap-3">
               <Clock size={24} />
               <div>
                 <p className="font-bold">
                   {isOptInPhase ? "This Weekend's Quest" : 'Quest In Progress'}
                 </p>
-                <p className="text-purple-100 text-sm">
-                  {isOptInPhase 
-                    ? 'Decide if you\'re in by Friday 8 PM' 
+                <p className="text-white/70 text-sm">
+                  {isOptInPhase
+                    ? 'Decide if you\'re in by Friday 8 PM'
                     : 'Complete by Sunday 6 PM'}
                 </p>
               </div>
@@ -98,14 +98,14 @@ export default function DashboardPage() {
           {participants.length > 0 && (
             <div className="quest-card p-4 mt-6">
               <div className="flex items-center gap-2 mb-3">
-                <Users size={18} className="text-purple-600" />
-                <h3 className="font-bold text-purple-800">Who&apos;s In</h3>
+                <Users size={18} className="text-primary" />
+                <h3 className="font-bold text-foreground">Who&apos;s In</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {participants.map((name) => (
                   <span
                     key={name}
-                    className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium"
+                    className="bg-primary-light text-primary px-3 py-1 rounded-full text-sm font-medium"
                   >
                     {name}
                   </span>
@@ -117,18 +117,17 @@ export default function DashboardPage() {
           {/* Upload Section (shown after opt-in) */}
           {hasOptedIn && (
             <div className="quest-card p-6 mt-6">
-              <h3 className="font-bold text-purple-800 mb-4">Submit Your Proof</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Upload photos as evidence of your completed quest. 
+              <h3 className="font-bold text-foreground mb-4">Submit Your Proof</h3>
+              <p className="text-text-secondary text-sm mb-4">
+                Upload photos as evidence of your completed quest.
                 The admin will review and award points.
               </p>
               <label className="block">
-                <div className="border-2 border-dashed border-purple-300 rounded-xl p-8 text-center cursor-pointer hover:border-purple-500 hover:bg-purple-50 transition-colors">
-                  <span className="text-4xl mb-2 block">📸</span>
-                  <span className="text-purple-600 font-medium">
+                <div className="border-2 border-dashed border-card-border rounded-xl p-8 text-center cursor-pointer hover:border-primary hover:bg-primary-lighter transition-colors">
+                  <span className="text-primary font-medium">
                     Tap to upload photos
                   </span>
-                  <span className="text-gray-400 text-sm block mt-1">
+                  <span className="text-text-secondary text-sm block mt-1">
                     JPG, PNG up to 10MB each
                   </span>
                 </div>
@@ -139,22 +138,22 @@ export default function DashboardPage() {
 
           {/* WhatsApp Share (for admin) */}
           {player.isAdmin && (
-            <div className="quest-card p-4 mt-6 bg-green-50 border-green-200">
-              <h3 className="font-bold text-green-800 mb-2">📱 Share to WhatsApp</h3>
-              <p className="text-green-700 text-sm mb-3">
+            <div className="quest-card p-4 mt-6 bg-supporting-light border-supporting">
+              <h3 className="font-bold text-supporting mb-2">Share to WhatsApp</h3>
+              <p className="text-text-secondary text-sm mb-3">
                 Copy this message to announce the quest:
               </p>
-              <div className="bg-white p-3 rounded-lg border border-green-200 text-sm text-gray-700 mb-3">
-                🎲 *SIDE QUEST ALERT* 🎲{'\n\n'}
+              <div className="bg-white/50 p-3 rounded-lg border border-card-border text-sm text-foreground mb-3">
+                *SIDE QUEST ALERT*{'\n\n'}
                 This weekend&apos;s quest:{'\n'}
                 &quot;{quest.title_es}&quot;{'\n\n'}
                 Difficulty: {quest.difficulty.toUpperCase()} ({quest.base_points} pts){'\n'}
                 Mode: {quest.mode === 'multiplayer' ? `Multiplayer (${quest.suggested_players} players)` : 'Single Player'}{'\n\n'}
-                👉 Opt in by Friday 8 PM:{'\n'}
+                Opt in by Friday 8 PM:{'\n'}
                 https://quienseanima.com/quest/{mockCurrentSelection.id}
               </div>
-              <button className="btn-retro w-full bg-green-500 border-green-600 shadow-green-700">
-                Copy & Share 📋
+              <button className="btn-retro w-full bg-supporting border-none hover:bg-[#366840]">
+                Copy & Share
               </button>
             </div>
           )}

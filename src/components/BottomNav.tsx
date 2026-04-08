@@ -49,7 +49,7 @@ export default function BottomNav({ isAdmin = false }: BottomNavProps) {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-purple-200 shadow-lg md:hidden z-50">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-card-border shadow-md md:hidden z-50">
       <div className="flex justify-around items-center h-16 px-2">
         {navItems.map((item) => (
           <Link
@@ -57,8 +57,8 @@ export default function BottomNav({ isAdmin = false }: BottomNavProps) {
             href={item.href}
             className={`flex flex-col items-center justify-center px-3 py-2 rounded-lg transition-colors ${
               item.active
-                ? 'text-purple-600 bg-purple-50'
-                : 'text-gray-500 hover:text-purple-500'
+                ? 'text-primary bg-primary-lighter'
+                : 'text-text-secondary hover:text-primary'
             }`}
           >
             <item.icon size={22} strokeWidth={item.active ? 2.5 : 2} />

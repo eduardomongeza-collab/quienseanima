@@ -30,8 +30,8 @@ export default function LeaderboardPage() {
 
   if (!player) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-purple-50">
-        <div className="text-purple-600">Loading...</div>
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-primary">Loading...</div>
       </div>
     );
   }
@@ -44,11 +44,11 @@ export default function LeaderboardPage() {
   }));
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-50 to-amber-50">
-      <Header 
-        playerName={player.nickname} 
-        isAdmin={player.isAdmin} 
-        isLoggedIn={true} 
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header
+        playerName={player.nickname}
+        isAdmin={player.isAdmin}
+        isLoggedIn={true}
       />
 
       <main className="flex-1 px-4 py-6 pb-24 md:pb-6">
@@ -95,14 +95,14 @@ export default function LeaderboardPage() {
           {/* Season Info */}
           {activeTab === 'seasonal' && (
             <div className="quest-card p-4 mt-6 text-center">
-              <p className="text-gray-600 text-sm">
-                <span className="font-bold text-purple-600">{mockSeason.name}</span>
-                {' • '}
+              <p className="text-text-secondary text-sm">
+                <span className="font-bold text-primary">{mockSeason.name}</span>
+                {' \u2022 '}
                 {new Date(mockSeason.start_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                 {' - '}
                 {new Date(mockSeason.end_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
               </p>
-              <p className="text-gray-400 text-xs mt-2">
+              <p className="text-text-secondary text-xs mt-2">
                 Players with 0 points are not shown
               </p>
             </div>

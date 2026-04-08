@@ -1,17 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFF8F0;
-  --foreground: #2D1B4E;
-  --primary: #8B5CF6;
-  --primary-dark: #7C3AED;
-  --secondary: #F59E0B;
-  --accent: #EC4899;
-  --card-bg: #FFFBF5;
-  --card-border: #E9D5FF;
-  --success: #10B981;
-  --warning: #F59E0B;
-  --error: #EF4444;
+  --background: #F4E9D8;
+  --foreground: #2A2A2A;
+  --primary: #5A3E7C;
+  --primary-dark: #4A2E6C;
+  --primary-light: #DDD4E8;
+  --primary-lighter: #EDE6F3;
+  --secondary: #C0B153;
+  --secondary-dark: #A89A45;
+  --secondary-light: #EDE8CD;
+  --accent: #AC3A2F;
+  --accent-light: #EACECA;
+  --supporting: #437A4E;
+  --supporting-light: #D4E5D8;
+  --card-bg: #EDE0CC;
+  --card-border: #D4C5A9;
+  --success: #437A4E;
+  --warning: #C0B153;
+  --error: #AC3A2F;
+  --text-secondary: #6B6B6B;
 }
 
 @theme inline {
@@ -19,135 +27,128 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-primary-lighter: var(--primary-lighter);
   --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-light: var(--secondary-light);
   --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-supporting: var(--supporting);
+  --color-supporting-light: var(--supporting-light);
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
-  --font-sans: var(--font-quicksand);
+  --color-text-secondary: var(--text-secondary);
+  --font-sans: var(--font-lato);
+  --font-serif: var(--font-playfair);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
 
-/* 2000s sitcom-style card */
+/* Warm, cozy card */
 .quest-card {
-  background: linear-gradient(135deg, #FFFBF5 0%, #FEF3E2 100%);
-  border: 3px solid #E9D5FF;
-  border-radius: 16px;
-  box-shadow: 
-    0 4px 6px -1px rgba(139, 92, 246, 0.1),
-    0 2px 4px -2px rgba(139, 92, 246, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .quest-card:hover {
-  box-shadow: 
-    0 10px 15px -3px rgba(139, 92, 246, 0.2),
-    0 4px 6px -4px rgba(139, 92, 246, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  transform: translateY(-2px);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
 }
 
-/* Episode title styling */
+/* Episode title — serif, warm */
 .episode-title {
+  font-family: var(--font-serif), Georgia, serif;
   font-style: italic;
-  color: #7C3AED;
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+  color: var(--primary);
 }
 
-/* Retro button style */
+/* Warm button style */
 .btn-retro {
-  background: linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%);
-  border: 2px solid #6D28D9;
-  border-radius: 12px;
-  box-shadow: 
-    0 4px 0 #5B21B6,
-    0 6px 10px rgba(91, 33, 182, 0.3);
+  background: var(--primary);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(90, 62, 124, 0.18);
   color: white;
-  font-weight: 700;
+  font-weight: 600;
   padding: 12px 24px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.1s ease;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
 }
 
 .btn-retro:hover {
-  transform: translateY(2px);
-  box-shadow: 
-    0 2px 0 #5B21B6,
-    0 4px 6px rgba(91, 33, 182, 0.3);
+  background: var(--primary-dark);
+  box-shadow: 0 3px 10px rgba(90, 62, 124, 0.22);
+  transform: translateY(-1px);
 }
 
 .btn-retro:active {
-  transform: translateY(4px);
-  box-shadow: 
-    0 0 0 #5B21B6,
-    0 2px 4px rgba(91, 33, 182, 0.3);
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(90, 62, 124, 0.18);
 }
 
 .btn-secondary {
-  background: linear-gradient(180deg, #F59E0B 0%, #D97706 100%);
-  border: 2px solid #B45309;
-  box-shadow: 
-    0 4px 0 #92400E,
-    0 6px 10px rgba(146, 64, 14, 0.3);
+  background: var(--secondary);
+  box-shadow: 0 2px 6px rgba(192, 177, 83, 0.18);
 }
 
 .btn-secondary:hover {
-  box-shadow: 
-    0 2px 0 #92400E,
-    0 4px 6px rgba(146, 64, 14, 0.3);
+  background: var(--secondary-dark);
+  box-shadow: 0 3px 10px rgba(192, 177, 83, 0.22);
 }
 
 /* Tab navigation */
 .tab-active {
-  background: linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%);
+  background: var(--primary);
   color: white;
-  border-bottom: 3px solid #F59E0B;
+  border-bottom: 2px solid var(--secondary);
 }
 
 .tab-inactive {
-  background: #F3E8FF;
-  color: #6D28D9;
+  background: var(--primary-light);
+  color: var(--primary);
 }
 
 .tab-inactive:hover {
-  background: #EDE9FE;
+  background: var(--primary-lighter);
 }
 
 /* Leaderboard styling */
 .leaderboard-row {
-  background: linear-gradient(90deg, #FFFBF5 0%, #FEF3E2 100%);
-  border-left: 4px solid #8B5CF6;
+  background: var(--card-bg);
+  border-left: 4px solid var(--primary);
 }
 
 .leaderboard-row:nth-child(1) {
-  border-left-color: #F59E0B;
-  background: linear-gradient(90deg, #FEF3C7 0%, #FDE68A 100%);
+  border-left-color: var(--secondary);
+  background: var(--secondary-light);
 }
 
 .leaderboard-row:nth-child(2) {
   border-left-color: #9CA3AF;
-  background: linear-gradient(90deg, #F3F4F6 0%, #E5E7EB 100%);
+  background: #F0EBE0;
 }
 
 .leaderboard-row:nth-child(3) {
-  border-left-color: #CD7F32;
-  background: linear-gradient(90deg, #FED7AA 0%, #FDBA74 100%);
+  border-left-color: #A0714B;
+  background: #F0E2D0;
 }
 
 /* Points badge */
 .points-badge {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  border: 2px solid #B45309;
-  border-radius: 20px;
+  background: var(--secondary);
+  border: none;
+  border-radius: 16px;
   color: white;
   font-weight: 700;
   padding: 4px 12px;
@@ -156,16 +157,16 @@ body {
 
 /* Difficulty badges */
 .difficulty-easy {
-  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-  border: 2px solid #047857;
+  background: var(--supporting);
+  border: none;
 }
 
 .difficulty-medium {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  border: 2px solid #B45309;
+  background: var(--secondary);
+  border: none;
 }
 
 .difficulty-hard {
-  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-  border: 2px solid #B91C1C;
+  background: var(--accent);
+  border: none;
 }

@@ -50,7 +50,7 @@ export default function QuestCard({
       {/* Header with difficulty and points */}
       <div className="flex justify-between items-center mb-4">
         <span className={`${difficultyClass} points-badge text-xs`}>
-          ☆ {difficultyLabel} ☆
+          {difficultyLabel}
         </span>
         <span className="points-badge">
           {quest.base_points} PTS
@@ -63,14 +63,14 @@ export default function QuestCard({
       </h2>
 
       {/* Instructions */}
-      <div className="bg-white/50 rounded-lg p-4 mb-4 border border-purple-100">
-        <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+      <div className="bg-white/40 rounded-lg p-4 mb-4 border border-card-border">
+        <p className="text-text-secondary text-sm sm:text-base leading-relaxed">
           {quest.instructions_es}
         </p>
       </div>
 
       {/* Mode indicator */}
-      <div className="flex items-center gap-2 text-purple-600 mb-4">
+      <div className="flex items-center gap-2 text-primary mb-4">
         {quest.mode === 'multiplayer' ? (
           <>
             <Users size={18} />
@@ -88,15 +88,15 @@ export default function QuestCard({
 
       {/* Deadlines */}
       {(optInDeadline || completionDeadline) && (
-        <div className="bg-amber-50 rounded-lg p-3 mb-4 border border-amber-200">
+        <div className="bg-secondary-light rounded-lg p-3 mb-4 border border-card-border">
           {optInDeadline && (
-            <div className="flex items-center gap-2 text-amber-700 text-sm">
+            <div className="flex items-center gap-2 text-foreground text-sm">
               <Clock size={14} />
               <span>Opt-in by: {formatDeadline(optInDeadline)}</span>
             </div>
           )}
           {completionDeadline && (
-            <div className="flex items-center gap-2 text-amber-700 text-sm mt-1">
+            <div className="flex items-center gap-2 text-foreground text-sm mt-1">
               <Clock size={14} />
               <span>Complete by: {formatDeadline(completionDeadline)}</span>
             </div>
@@ -106,11 +106,11 @@ export default function QuestCard({
 
       {/* Point distribution for multiplayer */}
       {quest.mode === 'multiplayer' && quest.default_point_split && (
-        <div className="bg-purple-50 rounded-lg p-3 mb-4 border border-purple-200">
-          <p className="text-purple-700 text-sm font-medium mb-1">Point Distribution:</p>
+        <div className="bg-primary-lighter rounded-lg p-3 mb-4 border border-card-border">
+          <p className="text-primary text-sm font-medium mb-1">Point Distribution:</p>
           <div className="flex flex-wrap gap-2">
             {Object.entries(quest.default_point_split).map(([role, points]) => (
-              <span key={role} className="text-purple-600 text-sm bg-white px-2 py-1 rounded">
+              <span key={role} className="text-primary text-sm bg-white/50 px-2 py-1 rounded">
                 {role}: {points} pts
               </span>
             ))}
@@ -125,7 +125,7 @@ export default function QuestCard({
             onClick={onOptIn}
             className="btn-retro flex-1 text-center"
           >
-            I&apos;M IN! 🎯
+            I&apos;M IN!
           </button>
           <button
             onClick={onDecline}
@@ -139,8 +139,7 @@ export default function QuestCard({
       {/* Already opted in state */}
       {showActions && hasOptedIn && (
         <div className="mt-6 text-center">
-          <div className="bg-green-100 text-green-700 rounded-lg p-4 border-2 border-green-300">
-            <span className="text-2xl mb-2 block">✅</span>
+          <div className="bg-supporting-light text-supporting rounded-lg p-4 border border-supporting">
             <p className="font-bold">You&apos;re in!</p>
             <p className="text-sm mt-1">Complete the quest and upload your proof by Sunday 6 PM</p>
           </div>

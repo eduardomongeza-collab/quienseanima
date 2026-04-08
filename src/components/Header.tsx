@@ -14,16 +14,16 @@ export default function Header({ playerName, isAdmin = false, isLoggedIn = false
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-gradient-to-r from-purple-600 via-purple-500 to-amber-500 shadow-lg">
+    <header className="bg-primary shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <span className="text-2xl">🎲</span>
-            <span className="text-white font-bold text-xl tracking-tight hidden sm:block">
+            <span className="text-white font-bold text-xl tracking-tight hidden sm:block font-serif">
               Quien Se Anima
             </span>
-            <span className="text-white font-bold text-lg tracking-tight sm:hidden">
+            <span className="text-white font-bold text-lg tracking-tight sm:hidden font-serif">
               QSA
             </span>
           </Link>
@@ -55,7 +55,7 @@ export default function Header({ playerName, isAdmin = false, isLoggedIn = false
               {isAdmin && (
                 <Link
                   href="/admin"
-                  className="flex items-center gap-2 px-4 py-2 text-amber-200 hover:text-amber-100 hover:bg-white/10 rounded-lg transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 text-secondary-light hover:text-white hover:bg-white/10 rounded-lg transition-colors"
                 >
                   <Users size={18} />
                   <span>Admin</span>
@@ -74,7 +74,7 @@ export default function Header({ playerName, isAdmin = false, isLoggedIn = false
                 <span className="text-white/90 text-sm">{playerName}</span>
               </div>
             )}
-            
+
             {isLoggedIn && (
               <button
                 className="md:hidden text-white p-2"
@@ -83,7 +83,7 @@ export default function Header({ playerName, isAdmin = false, isLoggedIn = false
                 {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             )}
-            
+
             {!isLoggedIn && (
               <Link
                 href="/login"
@@ -126,7 +126,7 @@ export default function Header({ playerName, isAdmin = false, isLoggedIn = false
               {isAdmin && (
                 <Link
                   href="/admin"
-                  className="flex items-center gap-3 px-4 py-3 text-amber-200 hover:bg-white/10 rounded-lg"
+                  className="flex items-center gap-3 px-4 py-3 text-secondary-light hover:bg-white/10 rounded-lg"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Users size={20} />

@@ -31,8 +31,8 @@ export default function QuestLibraryPage() {
 
   if (!player) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-purple-50">
-        <div className="text-purple-600">Loading...</div>
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-primary">Loading...</div>
       </div>
     );
   }
@@ -52,9 +52,9 @@ export default function QuestLibraryPage() {
 
   const getDifficultyBadge = (difficulty: string) => {
     const classes = {
-      easy: 'bg-green-100 text-green-700 border-green-300',
-      medium: 'bg-amber-100 text-amber-700 border-amber-300',
-      hard: 'bg-red-100 text-red-700 border-red-300',
+      easy: 'bg-supporting-light text-supporting border-supporting',
+      medium: 'bg-secondary-light text-foreground border-card-border',
+      hard: 'bg-accent-light text-accent border-accent',
     }[difficulty] || '';
     return classes;
   };
@@ -64,21 +64,21 @@ export default function QuestLibraryPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-50 to-amber-50">
-      <Header 
-        playerName={player.nickname} 
-        isAdmin={player.isAdmin} 
-        isLoggedIn={true} 
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header
+        playerName={player.nickname}
+        isAdmin={player.isAdmin}
+        isLoggedIn={true}
       />
 
       <main className="flex-1 px-4 py-6 pb-24 md:pb-6">
         <div className="max-w-2xl mx-auto">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-purple-800">Quest Library</h1>
-            <p className="text-gray-600 text-sm mt-1">
-              {player.isAdmin 
-                ? 'View all quests and manage the pool' 
+            <h1 className="text-2xl font-bold text-foreground font-serif">Quest Library</h1>
+            <p className="text-text-secondary text-sm mt-1">
+              {player.isAdmin
+                ? 'View all quests and manage the pool'
                 : 'Browse completed quests from this season'}
             </p>
           </div>
@@ -108,13 +108,13 @@ export default function QuestLibraryPage() {
                   filter === 'upcoming' ? 'tab-active' : 'tab-inactive'
                 }`}
               >
-                🔒 Upcoming
+                Upcoming
               </button>
             )}
           </div>
 
           {/* Quest Count */}
-          <p className="text-gray-500 text-sm mb-4">
+          <p className="text-text-secondary text-sm mb-4">
             {displayQuests.length} quest{displayQuests.length !== 1 ? 's' : ''}
           </p>
 
@@ -132,12 +132,12 @@ export default function QuestLibraryPage() {
                     {/* Status indicator */}
                     <div className="flex items-center gap-2 mb-2">
                       {isCompleted(quest) ? (
-                        <span className="flex items-center gap-1 text-green-600 text-xs font-medium">
+                        <span className="flex items-center gap-1 text-supporting text-xs font-medium">
                           <CheckCircle size={14} />
                           Completed
                         </span>
                       ) : (
-                        <span className="flex items-center gap-1 text-gray-400 text-xs font-medium">
+                        <span className="flex items-center gap-1 text-text-secondary text-xs font-medium">
                           {player.isAdmin ? (
                             <>
                               <Clock size={14} />
@@ -157,23 +157,23 @@ export default function QuestLibraryPage() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-bold text-purple-800 text-sm sm:text-base leading-tight">
+                    <h3 className="font-bold text-foreground text-sm sm:text-base leading-tight font-serif">
                       &ldquo;{quest.title_es}&rdquo;
                     </h3>
 
                     {/* Meta */}
-                    <div className="flex items-center gap-3 mt-2 text-gray-500 text-xs">
+                    <div className="flex items-center gap-3 mt-2 text-text-secondary text-xs">
                       <span className="flex items-center gap-1">
                         {quest.mode === 'multiplayer' ? (
                           <Users size={12} />
                         ) : (
                           <User size={12} />
                         )}
-                        {quest.mode === 'multiplayer' 
-                          ? `${quest.suggested_players} players` 
+                        {quest.mode === 'multiplayer'
+                          ? `${quest.suggested_players} players`
                           : 'Solo'}
                       </span>
-                      <span className="font-medium text-amber-600">
+                      <span className="font-medium text-primary">
                         {quest.base_points} pts
                       </span>
                     </div>
@@ -182,7 +182,7 @@ export default function QuestLibraryPage() {
 
                 {/* Instructions (collapsed by default, could add expand) */}
                 {isCompleted(quest) && (
-                  <p className="text-gray-600 text-sm mt-3 line-clamp-2">
+                  <p className="text-text-secondary text-sm mt-3 line-clamp-2">
                     {quest.instructions_es}
                   </p>
                 )}
@@ -193,10 +193,9 @@ export default function QuestLibraryPage() {
           {/* Empty State */}
           {displayQuests.length === 0 && (
             <div className="quest-card p-8 text-center">
-              <span className="text-4xl mb-4 block">📚</span>
-              <p className="text-gray-500">
-                {filter === 'completed' 
-                  ? 'No completed quests yet this season' 
+              <p className="text-text-secondary">
+                {filter === 'completed'
+                  ? 'No completed quests yet this season'
                   : 'No quests to display'}
               </p>
             </div>
@@ -204,9 +203,9 @@ export default function QuestLibraryPage() {
 
           {/* Admin note */}
           {!player.isAdmin && (
-            <div className="bg-purple-50 rounded-lg p-4 mt-6 border border-purple-200">
-              <p className="text-purple-700 text-sm text-center">
-                🔒 Upcoming quests are hidden until they&apos;re selected
+            <div className="bg-primary-lighter rounded-lg p-4 mt-6 border border-card-border">
+              <p className="text-primary text-sm text-center">
+                Upcoming quests are hidden until they&apos;re selected
               </p>
             </div>
           )}
